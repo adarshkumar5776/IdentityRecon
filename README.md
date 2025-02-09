@@ -45,24 +45,24 @@ This endpoint **identifies and consolidates customer contacts** based on email a
 ### **📌 Request Format**
 The request must be a **JSON payload** containing at least an `email` or `phoneNumber`.
 
-```json
-{
-  "email": "mcfly@hillvalley.edu",
-  "phoneNumber": "123456"
-}
+    ```json
+    {
+      "email": "mcfly@hillvalley.edu",
+      "phoneNumber": "123456"
+    }
 
 ### **📌 Response Format**
 The API returns a **JSON response** containing the consolidated contact information.
 
-```json
-{
-  "contact": {
-    "primaryContatctId": 1,
-    "emails": ["lorraine@hillvalley.edu", "mcfly@hillvalley.edu"],
-    "phoneNumbers": ["123456"],
-    "secondaryContactIds": [23]
-  }
-}
+    ```json
+    {
+      "contact": {
+        "primaryContatctId": 1,
+        "emails": ["lorraine@hillvalley.edu", "mcfly@hillvalley.edu"],
+        "phoneNumbers": ["123456"],
+        "secondaryContactIds": [23]
+      }
+    }
 
 ## 📌 How It Works
 
