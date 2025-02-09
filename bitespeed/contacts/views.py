@@ -12,23 +12,16 @@ def identify(request):
     matching_contacts = Contact.objects.filter(Q(email=email) | Q(phoneNumber=phone))
 
     if matching_contacts.exists():
-        primary_contact = None
-        all_contacts = set()
-        emails = set()
-        phoneNumbers = set()
+        primary_contacts = list(matching_contacts.filter(linkPrecedence="primary"))
+
+        primary_contact = min(primary_contacts, key=lambda c: c.createdAt)
+
         secondary_ids = []
+        emails = set(matching_contacts.values_list("email", flat=True))
+        phoneNumbers = set(matching_contacts.values_list("phoneNumber", flat=True))
 
-        for contact in matching_contacts:
-            all_contacts.add(contact)
-            emails.add(contact.email)
-            phoneNumbers.add(contact.phoneNumber)
-
-            if contact.linkPrecedence == "primary":
-                if not primary_contact or contact.createdAt < primary_contact.createdAt:
-                    primary_contact = contact
-
-        for contact in all_contacts:
-            if contact != primary_contact and contact.linkPrecedence == "primary":
+        for contact in primary_contacts:
+            if contact != primary_contact:
                 contact.linkPrecedence = "secondary"
                 contact.linkedId = primary_contact
                 contact.save()
@@ -64,8 +57,8 @@ def identify(request):
         {
             "contact": {
                 "primaryContatctId": primary_contact.id,
-                "emails": list(emails),
-                "phoneNumbers": list(phoneNumbers),
+                "emails": list(filter(None, emails)),
+                "phoneNumbers": list(filter(None, phoneNumbers)),
                 "secondaryContactIds": secondary_ids,
             }
         }
