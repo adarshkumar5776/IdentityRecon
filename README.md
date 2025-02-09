@@ -45,7 +45,7 @@ This endpoint **identifies and consolidates customer contacts** based on email a
 ### **📌 Request Format**
 The request must be a **JSON payload** containing at least an `email` or `phoneNumber`.
 
-```json
+
 {
   "email": "mcfly@hillvalley.edu",
   "phoneNumber": "123456"
@@ -54,7 +54,7 @@ The request must be a **JSON payload** containing at least an `email` or `phoneN
 ### **📌 Response Format**
 The API returns a **JSON response** containing the consolidated contact information.
 
-```json
+
 {
   "contact": {
     "primaryContatctId": 1,
