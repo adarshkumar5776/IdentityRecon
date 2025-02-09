@@ -45,7 +45,7 @@ This endpoint **identifies and consolidates customer contacts** based on email a
 ### **📌 Request Format**
 The request must be a **JSON payload** containing at least an `email` or `phoneNumber`.
 
-    ```json
+    ```
     {
       "email": "mcfly@hillvalley.edu",
       "phoneNumber": "123456"
@@ -54,7 +54,7 @@ The request must be a **JSON payload** containing at least an `email` or `phoneN
 ### **📌 Response Format**
 The API returns a **JSON response** containing the consolidated contact information.
 
-    ```json
+    ```
     {
       "contact": {
         "primaryContatctId": 1,
@@ -82,6 +82,19 @@ It follows these steps:
 3. **If additional information (new email/phone) is found**:
    - A **secondary contact is created** and linked to the primary.
 
+## 🌍 Hosted API Endpoint
+The API is live at:  
+🔗 **[https://assesment-new.onrender.com/identify](https://assesment-new.onrender.com/identify)**  
+
+You can send a **POST request** to this endpoint using **cURL**:
+```
+    curl --location 'https://assesment-new.onrender.com/identify' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "email": "lorraine@hillvalley.edu",
+        "phoneNumber": "123456"
+    }'
+```
 
 ## 📌 Database Schema (`Contact` Model)
 
