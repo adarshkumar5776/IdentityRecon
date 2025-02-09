@@ -15,22 +15,32 @@ This Django-based **Identity Reconciliation API** helps **track and merge custom
 ## 🔧 Installation & Setup
 
 ### 1️ **Clone the Repository**
+```
 git clone https://github.com/adarshkumar5776/IdentityRecon.git
 cd IdentityRecon
+```
 
 ### 2 **Set Up a Virtual Environment**
+```
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
 ### 3 **Install Dependencies**
+```
 pip install -r requirements.txt
+```
 
 ### 4 **Run Database Migrations**
+```
 python manage.py makemigrations contacts
 python manage.py migrate
+```
 
 ### 5 **Start the Django Server**
+```
 python manage.py runserver
+```
 
 ### The API will be accessible at http://127.0.0.1:8000/
 
